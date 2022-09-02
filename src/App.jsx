@@ -1,7 +1,15 @@
+import { Card } from "./components/Card";
+import profile from "./assets/profilePic.svg";
+
 function App() {
   return (
     <>
-      <p>helloo world</p>
+      <Card
+        image={profile}
+        contact="Contact Name "
+        phone="567 432 12 32 "
+        email="contact1@gmail.com "
+      />
     </>
   );
 }
