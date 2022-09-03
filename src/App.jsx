@@ -1,6 +1,7 @@
 import { Card } from "./components/Card";
 import profile from "./assets/profilePic.svg";
 import { useEffect, useState } from "react";
+import { Search } from "./components/Search";
 
 function App() {
   useEffect(() => {
@@ -18,15 +19,31 @@ function App() {
   };
   return (
     <>
-      {users.map((user) => (
-        <Card
-          key={user.email}
-          image={user.image.large}
-          contact={`${user.name.first} ${user.name.last}`}
-          phone={user.phone}
-          email={user.email}
-        />
-      ))}
+      {/* filter */}
+      {users
+        .filter((user) => {
+          if (search === "") {
+            return user;
+          } else if (
+            user.name.first.toLowerCase().includes(search.toLowerCase()) ||
+            user.name.last.toLowerCase().includes(search.toLowerCase()) ||
+            user.name.first.toLowerCase().includes(search.toLowerCase()) ||
+            user.name.first.toLowerCase().includes(search.toLowerCase()) ||
+            user.name.first.toLowerCase().includes(search.toLowerCase()) ||
+            user.cell.includes(search)
+          ) {
+            return user + <Search />;
+          }
+        })
+        .map((user) => (
+          <Card
+            key={user.email}
+            image={user.image.large}
+            contact={`${user.name.first} ${user.name.last}`}
+            phone={user.phone}
+            email={user.email}
+          />
+        ))}
     </>
   );
 }
