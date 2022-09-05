@@ -29,28 +29,20 @@ function App() {
           } else if (
             user.name.first.toLowerCase().includes(search.toLowerCase()) ||
             user.name.last.toLowerCase().includes(search.toLowerCase()) ||
-            user.name.first.toLowerCase().includes(search.toLowerCase()) ||
-            user.name.first.toLowerCase().includes(search.toLowerCase()) ||
-            user.name.first.toLowerCase().includes(search.toLowerCase()) ||
+            user.email.toLowerCase().includes(search.toLowerCase()) ||
+            user.phone.toLowerCase().includes(search.toLowerCase()) ||
             user.cell.includes(search)
           ) {
             return user;
           }
         })
         .map((user) => (
-          // <Card
-          //   key={user.email}
-          //   image={user.picture.large}
-          //   contact={`${user.name.first} ${user.name.last}`}
-          //   phone={user.phone}
-          //   email={user.email}
-          // />
           <Card
-            key="pdpd@excample.com"
-            image={profile}
-            contact="fulano ape...ido"
-            phone="49r840845096850"
-            email="pdpd@excample.com"
+            key={user.email}
+            image={user.picture.large}
+            contact={`${user.name.first} ${user.name.last}`}
+            phone={user.phone}
+            email={user.email}
           />
         ))}
     </>
