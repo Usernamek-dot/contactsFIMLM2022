@@ -1,6 +1,5 @@
 import { Card } from "./components/Card";
 import { useEffect, useState } from "react";
-import { Search } from "./components/Search";
 import { Header } from "./components/Header";
 
 function App() {
@@ -19,7 +18,6 @@ function App() {
   return (
     <>
       <Header />
-      {/* filter */}
       <div className="justify-center ">
         <div className="p-5 flex flex-row-reverse  input-group relative items-stretch  mb-3 mt-4 xl:w-96">
           <input
@@ -33,6 +31,7 @@ function App() {
         </div>
       </div>
       {users
+
         .filter((user) => {
           if (search === "") {
             return user;
