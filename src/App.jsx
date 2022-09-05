@@ -4,21 +4,21 @@ import { useEffect, useState } from "react";
 import { Search } from "./components/Search";
 
 function App() {
+  const [users, setUsers] = useState([]);
+  const [search, setSearch] = useState("");
+
   useEffect(() => {
     contacts();
   }, []);
 
   const contacts = async () => {
-    const [users, setUsers] = useState([]);
-
-    const resp = await fetch(
-      "https://randomuser.me/api/?results=3/?gender=male"
-    );
+    const resp = await fetch("https://randomuser.me/api/?results=10");
     const data = await resp.json();
     setUsers(data.results);
   };
   return (
     <>
+      <Search />
       {/* filter */}
       {users
         .filter((user) => {
@@ -32,23 +32,27 @@ function App() {
             user.name.first.toLowerCase().includes(search.toLowerCase()) ||
             user.cell.includes(search)
           ) {
-            return user + <Search />;
+            return user;
           }
         })
         .map((user) => (
+          // <Card
+          //   key={user.email}
+          //   image={user.picture.large}
+          //   contact={`${user.name.first} ${user.name.last}`}
+          //   phone={user.phone}
+          //   email={user.email}
+          // />
           <Card
-            key={user.email}
-            image={user.image.large}
-            contact={`${user.name.first} ${user.name.last}`}
-            phone={user.phone}
-            email={user.email}
+            key="pdpd@excample.com"
+            image={profile}
+            contact="fulano ape...ido"
+            phone="49r840845096850"
+            email="pdpd@excample.com"
           />
         ))}
     </>
   );
-}
-
-{
 }
 
 export default App;
