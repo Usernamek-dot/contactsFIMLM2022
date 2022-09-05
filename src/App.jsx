@@ -19,7 +19,7 @@ function App() {
   return (
     <>
       <Header />
-      {/* <Search /> */}
+      {/* filter */}
       <div className="justify-center ">
         <div className="p-5 flex flex-row-reverse  input-group relative items-stretch  mb-3 mt-4 xl:w-96">
           <input
@@ -28,18 +28,10 @@ function App() {
             placeholder="Search"
             aria-label="Search"
             aria-describedby="button-addon3"
-          />
-          <button
             onChange={(e) => setSearch(e.target.value)}
-            className="basis-1/1 btn inline-block px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
-            type="button"
-            id="button-addon3"
-          >
-            Search
-          </button>
+          />
         </div>
       </div>
-      {/* filter */}
       {users
         .filter((user) => {
           if (search === "") {
