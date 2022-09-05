@@ -2,6 +2,7 @@ import { Card } from "./components/Card";
 import profile from "./assets/profilePic.svg";
 import { useEffect, useState } from "react";
 import { Search } from "./components/Search";
+import { Header } from "./components/Header";
 
 function App() {
   const [users, setUsers] = useState([]);
@@ -18,6 +19,7 @@ function App() {
   };
   return (
     <>
+      <Header />
       <Search />
       {/* filter */}
       {users
