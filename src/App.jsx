@@ -1,5 +1,4 @@
 import { Card } from "./components/Card";
-import profile from "./assets/profilePic.svg";
 import { useEffect, useState } from "react";
 import { Search } from "./components/Search";
 import { Header } from "./components/Header";
@@ -20,7 +19,26 @@ function App() {
   return (
     <>
       <Header />
-      <Search />
+      {/* <Search /> */}
+      <div className="justify-center ">
+        <div className="p-5 flex flex-row-reverse  input-group relative items-stretch  mb-3 mt-4 xl:w-96">
+          <input
+            type="search"
+            className="basis-1/4 form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+            placeholder="Search"
+            aria-label="Search"
+            aria-describedby="button-addon3"
+          />
+          <button
+            onChange={(e) => setSearch(e.target.value)}
+            className="basis-1/1 btn inline-block px-6 py-2 border-2 border-blue-600 text-blue-600 font-medium text-xs leading-tight uppercase rounded hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out"
+            type="button"
+            id="button-addon3"
+          >
+            Search
+          </button>
+        </div>
+      </div>
       {/* filter */}
       {users
         .filter((user) => {
@@ -28,22 +46,26 @@ function App() {
             return user;
           } else if (
             user.name.first.toLowerCase().includes(search.toLowerCase()) ||
-            user.name.last.toLowerCase().includes(search.toLowerCase()) ||
             user.email.toLowerCase().includes(search.toLowerCase()) ||
-            user.phone.toLowerCase().includes(search.toLowerCase()) ||
             user.cell.includes(search)
           ) {
             return user;
           }
         })
         .map((user) => (
-          <Card
-            key={user.email}
-            image={user.picture.large}
-            contact={`${user.name.first} ${user.name.last}`}
-            phone={user.phone}
-            email={user.email}
-          />
+          <Card key={user.email}>
+            <img
+              class=" w-80 h-80 md:h-auto object-cover md:w-48 rounded-t-lg md:rounded-none md:rounded-l-lg"
+              src={user.picture.large}
+            />
+            <div class="p-6 flex flex-col justify-start">
+              <h5 class="text-gray-900 text-xl font-medium mb-2">
+                {`${user.name.first} ${user.name.last}`}
+              </h5>
+              <p class="text-gray-700 text-base mb-4">{user.phone}</p>
+              <p class="text-gray-600 text-xs">{user.email}</p>
+            </div>
+          </Card>
         ))}
     </>
   );

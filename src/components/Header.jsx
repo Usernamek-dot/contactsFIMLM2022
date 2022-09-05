@@ -2,8 +2,8 @@ import React from "react";
 
 export const Header = () => {
   return (
-    <div>
-      <h1 className="text-center  ">Contacts</h1>
-    </div>
+    <h2 className=" text-center font-medium leading-tight text-4xl mt-0 mb-2 text-gray-600">
+      Contacts
+    </h2>
   );
 };
